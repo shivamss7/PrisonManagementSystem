@@ -1,0 +1,103 @@
+ .overlay {
+  z-index: 2;
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.55);
+}
+
+.cover {
+  height: 37em;
+  width: 100%;
+  color: white; 
+  background-size: cover;
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  position: relative;
+}
+
+.text-wrap {
+z-index: 3; 
+font-size: 50px;
+color: white;
+}
+
+#footer {
+  padding: 50px 0;
+  color: #7f7f7f;
+  position: relative;
+}
+
+.feature b{
+  font-size: 25px;
+}
+
+.feature p {
+  font-size: 16.5px;
+  padding-top: 10px;
+}
+
+.style2 {
+  background-color: #e6e6e6;
+}
+
+.navbar .nav > li > a , .dropdown-menu > li > a{
+    color: black;
+}
+
+.navbar .nav > li > a:hover, .dropdown-menu > li > a:hover{
+    color: #0C9CEE;
+}
+
+.form .container {
+  width: 60%;
+}
+
+.form h2 {
+  margin-bottom: 30px;
+}
+
+.admin-incorrect .container {
+  width: 40%;
+}
+
+.photo-container img{
+   height: 350px;
+   width: 425px;
+   position: relative;
+   display: inline-block;
+   border-width: 2px;
+   border-color: #0C9CEE;
+   border-style: solid;
+   line-height: 0;
+   margin-bottom: 25px;
+   object-fit: cover;
+}
+
+/*centering the nav-bar*/
+.navbar-nav {
+    float:none;
+    margin:0 auto;
+    display: block;
+    text-align: center;
+}
+.navbar-nav > li {
+    display: inline-block;
+    float:none;
+}
+
+/*centering the nav-bar end*/
+
+.tab h2:hover {
+    color: #0C9CEE;
+    cursor:pointer;
+    cursor: hand;
+}
+.error {
+  color: red;
+  font-size: 12px;
+  display :none;
+}
