@@ -1,0 +1,83 @@
+<!-- bootstrap -->
+<link rel="stylesheet" href="../css/bootstrap.css">
+<!-- main style -->
+<link rel="stylesheet" href="../css/style.css">
+<!-- icons -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <!-- script boostrap -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+<html>
+    <head>
+    	<title> Prison Management </title>
+    </head>
+
+<body>
+	<header class="pris-header cover" style="background-image: url(../images/prison_inmates.jpg);">
+		<div class="overlay"></div>
+		<div class="container">
+		   <div class = "row">
+			  <div class = "col-md-12 text-center text-wrap">
+				<p>Prison Management</p>
+			  </div>
+			   <div class = "col-md-12 text-center text-wrap " style="margin-top: 6em;">
+				<p>Find Inmates</p>
+	      </div>
+	    </div>
+	</header>
+
+	<nav class ="navbar navbar-default ">
+		<div class="container-fluid">
+				<ul class="nav navbar-nav">
+					<li><a href = "../index.html">Home</a></li>
+                    <li><a href = "acts_and_rules.html">Acts & Rules</a></li>   
+					<li class ="active"><a href = "familyLogin.html">Family Login</a></li>
+					<li><a href = "admin.html">Admin Login</a></li> 
+                    <li><a href="../php/details.php">Prisoner's Details</a></li>
+				</ul>
+		</div>
+	</nav>	 
+
+   <section class = "body">
+   	<div class="form">
+       <div class="container well">
+          <h2 class="text-center">Enter Details</h2>
+          <form class="form-horizontal" action="../php/session/loginFamily.php" method="post">
+				    <div class="form-group">
+				      <label class="control-label col-sm-4" for="name">User-Name</label>
+				      <div class="col-sm-5">
+				        <input type="text" class="form-control" id="name" placeholder="Enter Name.." name="name" autocomplete="off">
+				      </div>
+				    </div>
+				    <div class="form-group">
+				      <label class="control-label col-sm-4" for="identity">Password</label>
+				      <div class="col-sm-5">          
+				        <input type="Password" class="form-control" id="pwd" placeholder="Enter Password.." name="password" autocomplete="off">
+				      </div>
+				    </div>
+				     <div class="form-group">        
+				      <div class="col-sm-offset-5 col-sm-6">
+				        <button type="submit" class="btn btn-default">Submit</button>
+				        <a  href="../php/register.php" class="btn btn-default">Register</a>
+				      </div>
+				    </div>
+		   </form>
+        </div>
+    </div>
+    </section>
+
+ 
+ 	<footer id="footer" class="style2">
+	    <div class="container">
+			<div class="">
+				<div class="col-md-12 text-center">
+					<p>&copy; Prison Management | All Rights Reserved. </p>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+</body>	
+</html>

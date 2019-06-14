@@ -1,3 +1,6 @@
+<?php
+require_once('config.php');
+?>
 <!-- bootstrap -->
 <link rel="stylesheet" href="../css/bootstrap.css">
 <!-- main style -->
@@ -31,7 +34,7 @@
 	<nav class ="navbar navbar-default ">
 		<div class="container-fluid">
 				<ul class="nav navbar-nav" style="float: right;">
-					<li><a href = "logout.php" class="btn btn-default">Logout</a></li>
+					<li><a href = "session/logoutAdmin.php" class="btn btn-default">Logout</a></li>
 					<!-- <li><a href = "../html/find_inmate.html">Find-Inmates</a></li> 
 					<li class="active"><a href = "#">Admin Login</a></li> 
                     <li class="dropdown">
@@ -64,39 +67,35 @@ $target_dir = "../images/prisoners/";
 $target_file = $target_dir . basename($_FILES["photo"]["name"]);
 move_uploaded_file($_FILES["photo"]["tmp_name"], $target_file);
 
-
-$conn = mysqli_connect("localhost", "root" , "" ,"prison");
-if(!$conn)
-  die("Connection failed: " . mysqli_connect_error());
  
-   $q = "INSERT INTO `data`( `name`, `identity`, `age`, `gender`,`photo`, `crime`, `date`, `duty`, `inouts`) VALUES ('$name','$identity','$age','$gender','$target_file','$crime','$date','$duty','$inout');";
-  if(mysqli_query($conn,$q))
-	 {
-	?>
-     <div class="admin-incorrect">
-	       <div class="container jumbotron text-center">
-		       	<p>Data Successfully Updated</p><br>
-	   	    	<p> <span>Add More</span>
-	   	    	<span><button type="submit" class="btn btn-default"onclick="window.location.href='admin.php'">Go Back!</button>
-	   	    	</span></p>
-	        </div>
+$q = "INSERT INTO `data`( `name`, `identity`, `age`, `gender`,`photo`, `crime`, `date`, `duty`, `inouts`) VALUES ('$name','$identity','$age','$gender','$target_file','$crime','$date','$duty','$inout');";
+if(mysqli_query($conn,$q))
+ {
+?>
+ <div class="admin-incorrect">
+       <div class="container jumbotron text-center">
+	       	<p>Data Successfully Updated</p><br>
+   	    	<p> <span>Add More</span>
+   	    	<span><button type="submit" class="btn btn-default"onclick="window.location.href='admin.php'">Go Back!</button>
+   	    	</span></p>
         </div>
+    </div>
 
-	   <?php  
-       }
-       else {
-       ?>
-       <div class="admin-incorrect">
-	       <div class="container jumbotron text-center">
-		       	<p>Data not Updated</p><br>
-	   	    	<p> <span>Try Again</span>
-	   	    	<span><button type="submit" class="btn btn-default"onclick="window.location.href='admin.php'">Go Back!</button>
-	   	    	</span></p>
-	        </div>
+   <?php  
+   }
+   else {
+   ?>
+   <div class="admin-incorrect">
+       <div class="container jumbotron text-center">
+	       	<p>Data not Updated</p><br>
+   	    	<p> <span>Try Again</span>
+   	    	<span><button type="submit" class="btn btn-default"onclick="window.location.href='admin.php'">Go Back!</button>
+   	    	</span></p>
         </div>
-        <?php
-        }
-       ?>
+    </div>
+    <?php
+    }
+   ?>
 
    </section>
 

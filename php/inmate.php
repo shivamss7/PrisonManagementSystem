@@ -1,4 +1,7 @@
-
+<?php
+session_start();
+require_once('config.php');
+?>
 <!-- bootstrap -->
 <link rel="stylesheet" href="../css/bootstrap.css">
 <!-- main style -->
@@ -12,53 +15,61 @@
 
 <html>
     <head>
-    	<title> Prison Management </title>
+      <title> Prison Management </title>
     </head>
 
 <body>
-	<header class="pris-header cover" style="background-image: url(../images/prison_inmates.jpg);">
-		<div class="overlay"></div>
-		<div class="container">
-		   <div class = "row">
-			  <div class = "col-md-12 text-center text-wrap">
-				<p>Prison Management</p>
-			  </div>
-			   <div class = "col-md-12 text-center text-wrap " style="margin-top: 6em;">
-				<p>Find Inmates</p>
-	      </div>
-	    </div>
-	</header>
+  <header class="pris-header cover" style="background-image: url(../images/prison_inmates.jpg);">
+    <div class="overlay"></div>
+    <div class="container">
+       <div class = "row">
+        <div class = "col-md-12 text-center text-wrap">
+        <p>Prison Management</p>
+        </div>
+         <div class = "col-md-12 text-center text-wrap " style="margin-top: 6em;">
+        <p>Find Inmates</p>
+        </div>
+      </div>
+  </header>
 
-	<nav class ="navbar navbar-default ">
-		<div class="container-fluid">
-				<ul class="nav navbar-nav">
-					<li><a href = "../index.html">Home</a></li>
-					<li class="active"><a href = "../html/find_inmate.html">Find-Inmates</a></li> 
-					<li><a href = "../html/admin.html">Admin Login</a></li> 
-                    <li><a href="details.php">Prisoner's Details</a></li>
-				</ul>
-		</div>
-	</nav>	 
+  <nav class ="navbar navbar-default ">
+    <div class="container-fluid">
+       <ul class="nav navbar-nav" style="float: right;">
+           <?php
+            $name = $_SESSION["login"];
+              $password = $_SESSION["password"];
+
+            $query = "SELECT * FROM `family` WHERE `name` = '$name'";
+
+            $result = mysqli_query($conn, $query) or die(mysqli_error($conn));
+
+            $row = mysqli_fetch_assoc($result);
+      
+              if($_SESSION["password"] == $row['password'])  {
+               ?>
+          <li><a href = "session/logoutFamily.php" class="btn btn-default">Logout</a></li>
+          <?php
+            }
+            ?>
+        </ul>
+    </div>
+  </nav>   
 
   <?php
-  $conn = mysqli_connect("localhost", "root" , "" ,"prison");
-  if(!$conn)
-    die("Connection failed: " . mysqli_connect_error());
-
-   $name = $_POST["name"];
-   $identity = $_POST["identity"];
-   $query = "SELECT * FROM `data` WHERE `identity` = '$identity' AND `name` = '$name' ";
+ 
+   $identity = $_GET['id'];
+   $query = "SELECT * FROM `data` WHERE `identity` = '$identity'";
    $result = mysqli_query($conn, $query) or die(mysqli_error($conn));
    $row = mysqli_fetch_assoc($result);
    if(is_null($row)) {
    ?>
      <div class="admin-incorrect">
-  	       <div class="container jumbotron text-center">
-  		       	<p> Sorry! No Inmate Found</p><br>
-  	   	    	<p> <span>Try Again</span>
-  	   	    <span><button type="submit" class="btn btn-default"onclick="window.location.href='../html/find_inmate.html'">Reload!</button>
-  	   	    	</span></p>
-  	        </div>
+           <div class="container jumbotron text-center">
+              <p> Sorry! No Inmate Found</p><br>
+              <p> <span>Try Again <?php echo $identity?></span>
+            <span><button type="submit" class="btn btn-default"onclick="window.location.href='../html/familyLogin.html'">Reload!</button>
+              </span></p>
+            </div>
       </div>
 
       <?php
@@ -67,13 +78,13 @@
       ?>
 
     <section class="body">
-   	    <div class="container">
+        <div class="container">
           <div class="text-center">
-   	    	<div class="photo-container">
-   	    		    <img src = "<?php echo $row['photo'] ?>">
-   	    	</div></div>
-   	    	<div class="row jumbotron">
-   	    		<div class="col-md-4">
+          <div class="photo-container">
+                <img src = "<?php echo $row['photo'] ?>">
+          </div></div>
+          <div class="row jumbotron">
+            <div class="col-md-4">
                     <p>Name : <?php echo $row['name'] ?></p><br>
                     <p>Age : <?php echo $row['age'] ?></p><br>
                     <p>Gender : <?php echo $row['gender'] ?></p>
@@ -87,23 +98,23 @@
                     <p>Current-Duty : <?php echo $row['duty'] ?></p><br>
                     <p>Release Date : <?php echo $row['date'] ?></p>
                 </div>
-   	    	</div>
-   	    </div>
+          </div>
+        </div>
     </section>
     <?php 
     }
     ?>
 
  
- 	<footer id="footer" class="style2">
-	    <div class="container">
-			<div class="">
-				<div class="col-md-12 text-center">
-					<p>&copy; Prison Management | All Rights Reserved. </p>
-				</div>
-			</div>
-		</div>
-	</footer>
+  <footer id="footer" class="style2">
+      <div class="container">
+      <div class="">
+        <div class="col-md-12 text-center">
+          <p>&copy; Prison Management | All Rights Reserved. </p>
+        </div>
+      </div>
+    </div>
+  </footer>
 
-</body>	
+</body> 
 </html>

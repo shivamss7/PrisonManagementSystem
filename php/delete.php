@@ -1,3 +1,6 @@
+<?php
+require_once('config.php');
+?>
 <!-- bootstrap -->
 <link rel="stylesheet" href="../css/bootstrap.css">
 <!-- main style -->
@@ -52,12 +55,6 @@
 
 $name = $_POST["name"];
 $identity = $_POST["identity"];
-
-
-$conn = mysqli_connect("localhost", "root" , "" ,"prison");
-if(!$conn)
-  die("Connection failed: " . mysqli_connect_error());
-
 
   $q = "DELETE FROM `data` WHERE  `name` = '$name' AND `identity` = '$identity' ";
   if(mysqli_query($conn,$q))

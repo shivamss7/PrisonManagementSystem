@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once('config.php');
 ?>
 <!-- bootstrap -->
 <link rel="stylesheet" href="../css/bootstrap.css">
@@ -35,9 +36,9 @@ session_start();
 		<div class="container-fluid">
 				<ul class="nav navbar-nav" style="float: right;">
 					 <?php
-				      if($_SESSION["login"] == 'admin' and $_SESSION["password"] == 'hello123')  {
+				      if($_SESSION["login"] == 'admin' and $_SESSION["password"] == 'admin')  {
 				       ?>
-					<li><a href = " logout.php" class="btn btn-default">Logout</a></li>
+					<li><a href = "session/logoutAdmin.php" class="btn btn-default">Logout</a></li>
 					<?php
 				    }
 				    ?>
@@ -58,7 +59,7 @@ session_start();
    <section class = "body">
 
       <?php
-      if($_SESSION["login"] != 'admin' or $_SESSION["password"] != 'hello123')  {
+      if($_SESSION["login"] != 'admin' or $_SESSION["password"] != 'admin')  {
        ?>
 
        <div class="admin-incorrect">
@@ -84,21 +85,21 @@ session_start();
 					      <label class="control-label col-sm-4" for="name">First-Name</label>
 					      <span class="error" id = "nameError"></span>
 					      <div class="col-sm-5">
-					        <input type="text" class="form-control" id="name" placeholder="Enter Name.." name="name">
+					        <input type="text" class="form-control" id="name" placeholder="Enter Name.." name="name" autocomplete="off">
 					      </div>
 					    </div>
 				        <div class="form-group">
 					      <label class="control-label col-sm-4" for="identity">Identity Number</label>
 					      <span class="error" id = "idError"></span>
 					      <div class="col-sm-5">          
-					        <input type="text" class="form-control" id="identity" placeholder="Enter Identity Number.." name="identity">
+					        <input type="text" class="form-control" id="identity" placeholder="Enter Identity Number.." name="identity" autocomplete="off">
 					      </div>
 					    </div>
 					    <div class="form-group">
 					      <label class="control-label col-sm-4" for="age">Age</label>
 					      <span class="error" id = "ageError"></span>
 					      <div class="col-sm-5">          
-					        <input type="number" class="form-control" id="age" placeholder="Enter Age.." name="age">
+					        <input type="number" class="form-control" id="age" placeholder="Enter Age.." name="age" autocomplete="off">
 					      </div>
 					    </div>
 					    <div class="form-group">
@@ -114,35 +115,35 @@ session_start();
 					      <label class="control-label col-sm-4" for="crime">Crime</label>
 					      <span class="error" id = "crimeError"></span>
 					      <div class="col-sm-5">          
-					        <input type="text" class="form-control" id="crime" placeholder="Enter Crime.." name="crime">
+					        <input type="text" class="form-control" id="crime" placeholder="Enter Crime.." name="crime" autocomplete="off">
 					      </div>
 					    </div>
 					    <div class="form-group">
 					      <label class="control-label col-sm-4" for="date">Release Date</label>
 					       <span class="error" id = "dateError"></span>
 					      <div class="col-sm-5">          
-					        <input type="date" class="form-control" id="date" placeholder="" name="date">
+					        <input type="date" class="form-control" id="date" placeholder="" name="date" autocomplete="off">
 					      </div>
 					    </div> 
 						<div class="form-group">
 					      <label class="control-label col-sm-4" for="duty">Duty</label>
 					      <span class="error" id = "dutyError"></span>
 					      <div class="col-sm-5">
-					        <input type="text" class="form-control" id="duty" placeholder="Enter Duty.." name="duty">
+					        <input type="text" class="form-control" id="duty" placeholder="Enter Duty.." name="duty" autocomplete="off">
 					      </div>
 				        </div>
 				        <div class="form-group">
 					      <label class="control-label col-sm-4" for="inouts">In/Out</label>
 					      <span class="error" id = "inoutsError"></span>
 					      <div class="col-sm-5">
-					        <input type="text" class="form-control" id="inouts" placeholder="Enter Location.." name="inouts">
+					        <input type="text" class="form-control" id="inouts" placeholder="Enter Location.." name="inouts" autocomplete="off">
 					      </div>
 				       </div>
 				       <div class="form-group">
 					      <label class="control-label col-sm-4" for="crime">Inmate's Photo</label>
 					      <span class="error" id = "photoError"></span>
 					      <div class="col-sm-5">          
-					        <input type="file" class="" id="photo" placeholder="Enter Path.." name="photo" > 
+					        <input type="file" class="" id="photo" placeholder="Enter Path.." name="photo" autocomplete="off"> 
 					      </div>
 					    </div>
 					     <div class="form-group">        
@@ -289,10 +290,6 @@ session_start();
         }
 
 	     <?php
-				$conn = mysqli_connect("localhost", "root" , "" ,"prison");
-				if(!$conn)
-				  die("Connection failed: " . mysqli_connect_error());
-
 				  $query = "SELECT * FROM `data` ";
 
 		          $result = mysqli_query($conn, $query) or die(mysqli_error($conn));
@@ -312,11 +309,6 @@ session_start();
 	              }
 	              ?>
             
-        else if (id[0] != "#") {
-        	document.getElementById("idError").innerHTML = "*Should start with #";
-        	document.getElementById("idError").style.display = "inline-block";
-            flag = 1;
-        } 
         else {
         	document.getElementById("idError").innerHTML = "*This ID can be used";
         	document.getElementById("idError").style.display = "inline-block";

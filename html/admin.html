@@ -32,10 +32,10 @@
 		<div class="container-fluid">
 				<ul class="nav navbar-nav">
 					<li><a href = "../index.html">Home</a></li>
-					<li><a href = "find_inmate.html">Find-Inmates</a></li> 
-					<li class="active"><a href = "#">Admin Login</a></li> 
+                    <li><a href = "acts_and_rules.html">Acts & Rules</a></li>   
+					<li><a href = "familyLogin.html">Family Login</a></li>
+					<li class ="active"><a href = "admin.html">Admin Login</a></li> 
                     <li><a href="../php/details.php">Prisoner's Details</a></li>
-                    <li><a href="../xml/about.xml">About</a></li>
 				</ul>
 		</div>
 	</nav>	 
@@ -44,17 +44,17 @@
    	<div class="form">
        <div class="container well">
           <h2 class="text-center">Enter Admin-Details</h2>
-          <form class="form-horizontal" action="../php/login.php" method="post">
+          <form class="form-horizontal" action="../php/session/loginAdmin.php" method="post">
 				    <div class="form-group">
 				      <label class="control-label col-sm-4" for="user">User-Name</label>
 				      <div class="col-sm-5">
-				        <input type="text" class="form-control" id="user" placeholder="Enter User-Name.." name="user">
+				        <input type="text" class="form-control" id="user" placeholder="Enter User-Name.." name="user" autocomplete="off">
 				      </div>
 				    </div>
 				    <div class="form-group">
 				      <label class="control-label col-sm-4" for="pwd">Password</label>
 				      <div class="col-sm-5">          
-				        <input type="Password" class="form-control" id="pwd" placeholder="Enter Password.." name="pwd">
+				        <input type="Password" class="form-control" id="pwd" placeholder="Enter Password.." name="pwd" autocomplete="off">
 				      </div>
 				    </div>
 				     <div class="form-group">        

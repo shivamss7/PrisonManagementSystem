@@ -1,3 +1,6 @@
+<?php
+require_once('config.php');
+?>
 <!-- bootstrap -->
 <link rel="stylesheet" href="../css/bootstrap.css">
 <!-- main style -->
@@ -32,10 +35,10 @@
 		<div class="container-fluid">
 				<ul class="nav navbar-nav">
 					<li><a href = "../index.html">Home</a></li>
-					<li><a href = "../html/find_inmate.html">Find-Inmates</a></li> 
-					<li><a href = "../html/admin.html">Admin Login</a></li> 
-                    <li class="active"><a href="details.php">Prisoner's Details</a></li>
-                    <li><a href="../xml/about.xml">About</a></li>
+		          	<li><a href = "../html/acts_and_rules.html">Acts & Rules</a></li>   
+		          	<li><a href = "../html/familyLogin.html">Family Login</a></li>
+		          	<li><a href = "../html/admin.html">Admin Login</a></li> 
+		          	<li class ="active"><a href="./details.php">Prisoner's Details</a></li>
 				</ul>
 		</div>
 	</nav>	 
@@ -56,10 +59,6 @@
 						      </tr>
 					     </thead>
 					     <?php
-								$conn = mysqli_connect("localhost", "root" , "" ,"prison");
-								if(!$conn)
-								  die("Connection failed: " . mysqli_connect_error());
-
 								  $query = "SELECT * FROM `data` ";
 
 						          $result = mysqli_query($conn, $query) or die(mysqli_error($conn));
@@ -101,9 +100,6 @@
 						      </tr>
 					     </thead>
 					     <?php
-								$conn = mysqli_connect("localhost", "root" , "" ,"prison");
-								if(!$conn)
-								  die("Connection failed: " . mysqli_connect_error());
 
 								  $query = "SELECT * FROM `data` ";
 
@@ -146,9 +142,6 @@
 						      </tr>
 					     </thead>
 					     <?php
-								$conn = mysqli_connect("localhost", "root" , "" ,"prison");
-								if(!$conn)
-								  die("Connection failed: " . mysqli_connect_error());
 
 								  $query = "SELECT * FROM `data` ";
 

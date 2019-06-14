@@ -101,3 +101,35 @@ color: white;
   font-size: 12px;
   display :none;
 }
+
+.block {
+  width: 33.33%;
+  float: left;
+  text-align: center;
+  font-size: 16px;
+  min-height: 300px;
+  vertical-align: middle;
+  padding: 40px;
+  background: #fff;
+  -webkit-box-shadow: 7px 14px 42px 3px rgba(163, 174, 184, 0.4);
+  -moz-box-shadow: 7px 14px 42px 3px rgba(163, 174, 184, 0.4);
+  -ms-box-shadow: 7px 14px 42px 3px rgba(163, 174, 184, 0.4);
+  -o-box-shadow: 7px 14px 42px 3px rgba(163, 174, 184, 0.4);
+  box-shadow: 7px 14px 42px 3px rgba(163, 174, 184, 0.4);
+  z-index: 7;
+  flex-grow: 1;
+  background-size: cover;
+  position: relative;
+  backgroun-repeat: no-repeat;
+}
+
+.to-animate {
+  opacity: 0;
+}
+.icons {
+  color: #0C9CEE
+}
+
+.row .feature{
+  display: flex;
+}
